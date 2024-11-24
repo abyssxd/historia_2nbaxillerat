@@ -122,6 +122,12 @@ footer {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.btnContainer{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
 .backBtn {
     text-decoration: none;
     padding: 12px 20px;

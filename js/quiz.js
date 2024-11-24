@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="feedback" id="feedback"></div>
             </div>
+            <div class="btnContainer">
             <button id="next-btn" style="display: none;">Següent</button>
+            </div>
         `;
 
         const optionButtons = document.querySelectorAll(".option");
@@ -32,15 +34,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedIndex = parseInt(event.target.getAttribute("data-index"));
         const feedback = document.getElementById("feedback");
 
+        document.querySelectorAll(".option").forEach((button, index) => {
+            button.disabled = true;
+            if (index === questions[currentQuestionIndex].answer) {
+                button.style.border = "2px solid rgba(76, 175, 80, 0.8)"; 
+                button.style.backgroundColor = "rgba(76, 175, 80, 0.2)"; 
+                button.style.color = "black";
+            } else if (index === selectedIndex && index !== questions[currentQuestionIndex].answer) {
+                button.style.border = "2px solid rgba(244, 67, 54, 0.8)";
+                button.style.backgroundColor = "rgba(244, 67, 54, 0.2)";
+                button.style.color = "black";
+            }
+        });
+
         if (selectedIndex === questions[currentQuestionIndex].answer) {
-            feedback.innerHTML = `<p style="color: green;">Correcte! ${questions[currentQuestionIndex].explanation}</p>`;
+            feedback.innerHTML = `<p style="color: rgba(76, 175, 80, 0.9);">Correcte! ${questions[currentQuestionIndex].explanation}</p>`;
         } else {
-            feedback.innerHTML = `<p style="color: red;">Incorrecte! ${questions[currentQuestionIndex].explanation}</p>`;
+            feedback.innerHTML = `<p style="color: rgba(244, 67, 54, 0.9);">Incorrecte! ${questions[currentQuestionIndex].explanation}</p>`;
         }
 
-        document.querySelectorAll(".option").forEach(button => {
-            button.disabled = true;
-        });
         document.getElementById("next-btn").style.display = "block"; 
     }
 

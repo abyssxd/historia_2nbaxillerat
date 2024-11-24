@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (selectedIndex === shuffledQuestions[currentQuestionIndex].answer) {
-            feedback.innerHTML = `<p style="color: rgba(76, 175, 80, 0.9);">Correcte! ${shuffledQuestions[currentQuestionIndex].explanation}</p>`;
+            feedback.innerHTML = `<p style="color: rgba(76, 175, 80, 0.9);"><strong>Correcte!</strong> <br><br> ${shuffledQuestions[currentQuestionIndex].explanation}</p>`;
         } else {
-            feedback.innerHTML = `<p style="color: rgba(244, 67, 54, 0.9);">Incorrecte! ${shuffledQuestions[currentQuestionIndex].explanation}</p>`;
+            feedback.innerHTML = `<p style="color: rgba(244, 67, 54, 0.9);"><strong>Incorrecte!</strong> <br><br> ${shuffledQuestions[currentQuestionIndex].explanation}</p>`;
         }
 
         document.getElementById("next-btn").style.display = "block";

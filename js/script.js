@@ -3,6 +3,6 @@ function showAnswer(button, answer) {
     answerElement.textContent = answer;
     answerElement.style.color = 'green';
     button.parentNode.appendChild(answerElement);
-    button.disabled = true; // Evita múltiples clics
+    button.disabled = true;
     button.style.backgroundColor = '#ddd';
 }

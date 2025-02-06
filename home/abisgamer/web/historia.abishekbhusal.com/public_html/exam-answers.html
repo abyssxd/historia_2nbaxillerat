@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Preguntes d'examen d'història amb respostes en català.">
+  <meta name="keywords" content="examen, preguntes, respostes, història, Segona República, Guerra Civil">
+  <meta name="author" content="Abishek Bhusal">
+  <title>Preguntes d'Examen - Respostes</title>
+  <link rel="stylesheet" href="css/exam.css?v=4">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+  <style>
+    /* Estils per les etiquetes de categoria */
+    .category-tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    /* Colors diferents per categoria */
+    .category.republic {
+      background-color: #00695c;
+      color: #e0f2f1;
+    }
+    .category.guerra-civil {
+      background-color: #b71c1c;
+      color: #ffebee;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Preguntes possibles d'Examen amb Respostes</h1>
+  </header>
+  <main>
+    <section class="exam-questions" id="exam-questions-container">
+      <!-- Les targetes es generaran aquí dinàmicament -->
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 AbishekBhusal.com</p>
+  </footer>
+
+  <!-- Carrega les preguntes -->
+  <script src="js/exam-questions.js?v=4"></script>
+  <!-- Script per generar les targetes d'examen -->
+  <script>
+    const container = document.getElementById('exam-questions-container');
+
+    if (typeof examQuestions !== 'undefined' && Array.isArray(examQuestions)) {
+      examQuestions.forEach(q => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        // Afegim la categoria amb una etiqueta visible
+        if(q.category) {
+          const categoryTag = document.createElement('div');
+          // Definim la classe en funció de la categoria
+          if(q.category.toLowerCase() === 'republic') {
+            categoryTag.className = 'category-tag category republic';
+            categoryTag.textContent = 'República';
+          } else if(q.category.toLowerCase() === 'guerra civil') {
+            categoryTag.className = 'category-tag category guerra-civil';
+            categoryTag.textContent = 'Guerra Civil';
+          } else {
+            categoryTag.className = 'category-tag';
+            categoryTag.textContent = q.category;
+          }
+          card.appendChild(categoryTag);
+        }
+
+        const title = document.createElement('h2');
+        title.textContent = q.id + ". " + q.topic;
+        card.appendChild(title);
+
+        const questionPara = document.createElement('p');
+        questionPara.innerHTML = "<strong>Pregunta:</strong> " + q.question;
+        card.appendChild(questionPara);
+
+        const answerPara = document.createElement('p');
+        answerPara.innerHTML = "<strong>Resposta:</strong> " + q.answerText;
+        card.appendChild(answerPara);
+
+        container.appendChild(card);
+      });
+    } else {
+      container.innerHTML = "<p>No s'han trobat preguntes d'examen.</p>";
+    }
+  </script>
+<script>
+  if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          registrations.forEach(function(registration) {
+              registration.unregister().then(() => {
+                  console.log("Service Worker unregistered.");
+                  window.location.reload(true); // Forces a full reload
+              });
+          });
+      });
+  }
+</script>
+
+</body>
+</html>
+

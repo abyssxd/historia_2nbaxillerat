@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flashcards</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Flashcards</h1>
+  </header>
+
+  <main>
+    <div class="counters">
+      <span id="know-counter" class="counter know">Know: 0</span>
+      <span id="current-card-counter" class="counter current">0/0</span>
+      <span id="still-learning-counter" class="counter learning">Still Learning: 0</span>
+    </div>
+
+    <div class="flashcard-container">
+      <div id="flashcards-container">
+        <!-- Flashcard será cargado dinámicamente aquí -->
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="track-progress">Track Progress: OFF</button>
+      <button id="translate-btn">Translate: OFF</button>
+      
+      <div class="navigation-buttons">
+        <button id="prev-btn" class="nav-btn" disabled>← Anterior</button>
+        <button id="next-btn" class="nav-btn">Siguiente →</button>
+      </div>
+
+      <div class="mark-buttons" style="display: none;">
+        <button id="mark-not-learnt-btn" class="mark-btn not-learnt">✘</button>
+        <button id="mark-learnt-btn" class="mark-btn learnt">✔</button>
+      </div>
+
+      <button id="reset-btn">Clear Progress</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 AbishekBhusal.com</p>
+  </footer>
+
+  <!-- Popup Modal -->
+  <div id="completion-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Congrats!</h2>
+      <p>You've learnt all the cards!</p>
+      <button id="modal-reset-btn">Reset Progress</button>
+    </div>
+  </div>
+</body>
+</html>
+
